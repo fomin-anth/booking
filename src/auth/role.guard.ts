@@ -2,9 +2,7 @@ import {
   CanActivate,
   ExecutionContext,
   Injectable,
-  UnauthorizedException,
 } from '@nestjs/common';
-import { AuthenticatedHeaders } from './auth.interfaces';
 import { Reflector } from '@nestjs/core';
 import { Role } from '../users/entities/user.entity';
 import { ROLES_DECORATOR_KEY } from '../users/entities/roles.decorator';
@@ -22,14 +20,5 @@ export class RoleGuard implements CanActivate {
     }
     const { user } = context.switchToHttp().getRequest();
     return requiredRoles.some((role) => user.role === role);
-  }
-
-  private extractTokenFromHeaders(
-    headers: AuthenticatedHeaders,
-  ): string | undefined {
-    if (!headers.authorization) {
-      throw new UnauthorizedException();
-    }
-    return headers.authorization;
   }
 }

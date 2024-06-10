@@ -91,7 +91,7 @@ export class UsersController implements IUsersController {
     @Body() updateUserDto: UpdateUserDto,
   ) {
     try {
-      const user = await this.usersService.update(+id, updateUserDto);
+      const user = await this.usersService.update(id, updateUserDto);
       return this.usersService.castUserToGetUserDto(user);
     } catch (ex) {
       throw ex;

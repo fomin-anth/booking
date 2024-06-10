@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { CreateBookingDto } from './dto/create-booking.dto';
 import { UpdateBookingDto } from './dto/update-booking.dto';
 
@@ -21,6 +21,7 @@ export class BookingsService {
   }
 
   remove(id: number) {
+    Logger.log(`Remove ${id} booking`);
     return `This action removes a #${id} booking`;
   }
 }
